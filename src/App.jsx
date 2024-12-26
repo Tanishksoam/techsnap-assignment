@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SmoothScroll from "./component/SmoothScroll";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,7 +69,7 @@ const ScrollColorChange = () => {
 
   return (
     <SmoothScroll>
-      <div className=" font-mono ">
+      <div className=" font-mono overflow-x-hidden ">
         <div
           className="section flex flex-col justify-center items-center gap-2"
           data-bg-color="#f9e1ee"
@@ -79,11 +80,11 @@ const ScrollColorChange = () => {
           </div>
         </div>
         <div
-          className="section section2"
+          className="section section2 relative"
           data-bg-color="#e0f0ff"
           style={{ height: "100vh" }}
         >
-          <div className="w-1440 flex justify-center items-center gap-2 relative">
+          <div className="w-1440 flex justify-center items-center gap-2 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="1217"
@@ -122,6 +123,58 @@ const ScrollColorChange = () => {
                 }}
               />
             </svg>
+            <div className=" absolute top-[45%] right-[5%] w-xl flex justify-start items-center gap-10">
+              <motion.div
+                animate={{
+                  y: [0, -10, 0], // Keyframes for floating effect
+                }}
+                transition={{
+                  duration: 2, // Duration for one full float cycle
+                  repeat: Infinity, // Infinite looping
+                  ease: "easeInOut",
+                  delay: 1, // Smooth easing
+                }}
+              >
+                <h4 className=" max-w-lg">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
+                  praesentium facere accusantium, rerum accusamus ad? Ad
+                  blanditiis vitae animi. Unde sit recusandae minima voluptates,
+                  tenetur placeat expedita a eveniet magnam eligendi. Doloremque
+                  deserunt error commodi debitis voluptates minima minus libero
+                  consequuntur quas quaerat, fuga quam laudantium veritatis,
+                  expedita, ab saepe velit cupiditate.
+                </h4>
+              </motion.div>
+              <motion.div
+                animate={{
+                  y: [0, -10, 0], // Keyframes for floating effect
+                }}
+                transition={{
+                  duration: 2, // Duration for one full float cycle
+                  repeat: Infinity, // Infinite looping
+                  ease: "easeInOut", // Smooth easing
+                }}
+              >
+                <aside className="bg-black text-white p-6 rounded-lg w-full max-w-lg font-mono">
+                  <div className="flex justify-between items-center">
+                    <div className="flex space-x-2 text-red-500">
+                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <p className="text-sm">bash</p>
+                  </div>
+                  <div className="mt-4">
+                    <p className="text-green-400">$ npm install next</p>
+                    <p className="text-white">+ next@10.2.3</p>
+                    <p className="text-white">
+                      added 1 package, and audited 2 packages in 3s
+                    </p>
+                    <p className="text-green-400">$</p>
+                  </div>
+                </aside>
+              </motion.div>
+            </div>
           </div>
         </div>
         <div
