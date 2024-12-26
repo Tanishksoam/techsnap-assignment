@@ -60,7 +60,7 @@ const ScrollColorChange = () => {
           scrollTrigger: {
             trigger: path.closest(".section"),
             start: "top 85%",
-            end: "+=1000",
+            end: "+=1500",
             scrub: 1,
           },
         }
@@ -242,9 +242,9 @@ const ScrollColorChange = () => {
         <div
           className="section"
           data-bg-color="#ffeddf"
-          style={{ height: "50vh" }}
+          style={{ height: "100vh" }}
         >
-          <h1>{/* <HScroll /> */}</h1>
+          <h1>{/* <HScroll /> */} Section 3</h1>
         </div>
       </div>
     </Smooth>
