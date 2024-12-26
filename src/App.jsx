@@ -8,6 +8,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ScrollColorChange = () => {
   const [pathLength, setPathLength] = useState(0);
+  const [pathLength2, setPathLength2] = useState(0);
+
   useEffect(() => {
     const displaceDiv = document.querySelector(".follow-mouse");
 
@@ -24,6 +26,25 @@ const ScrollColorChange = () => {
     });
   }, []);
   useEffect(() => {
+    const path2 = document.querySelector(".svg-path2");
+    if (path2) {
+      const totalLength2 = path2.getTotalLength();
+      setPathLength2(totalLength2);
+
+      gsap.fromTo(
+        path2,
+        { strokeDashoffset: totalLength2 },
+        {
+          strokeDashoffset: 0,
+          scrollTrigger: {
+            trigger: path2.closest(".section2"),
+            start: "top 85%",
+            end: "+=600",
+            scrub: 1,
+          },
+        }
+      );
+    }
     const path = document.querySelector(".svg-path");
     if (path) {
       const totalLength = path.getTotalLength();
@@ -51,7 +72,7 @@ const ScrollColorChange = () => {
     sections.forEach((section) => {
       ScrollTrigger.create({
         trigger: section,
-        start: "top 50%",
+        start: "top 80%",
         end: "bottom 50%",
         onEnter: () =>
           gsap.to("body", {
@@ -87,11 +108,49 @@ const ScrollColorChange = () => {
           <div className="w-1440 flex justify-center items-center gap-2 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="1264"
+              viewBox="0 0 10 1264"
+              fill="none"
+              className="w-full h-[100vh] absolute top-0 left-0 hidden lg:block"
+            >
+              <path
+                d="M5 4.5V1259"
+                stroke="white"
+                strokeWidth="9"
+                strokeLinecap="round"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="1264"
+              viewBox="0 0 10 1264"
+              fill="none"
+              className="w-full h-[100vh] absolute top-0 left-0 hidden lg:block"
+            >
+              <path
+                d="M5 4.5V1259"
+                stroke="black"
+                strokeWidth="9"
+                strokeLinecap="round"
+                className="svg-path2"
+                style={{
+                  transformOrigin: "0px 0px",
+                  translate: "none",
+                  rotate: "none",
+                  scale: "none",
+                  strokeDasharray: pathLength2,
+                }}
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
               width="1217"
               height="1209"
               viewBox="0 0 1217 1209"
               fill="none"
-              className="w-full h-[110vh] absolute top-0 left-0"
+              className="w-full h-[110vh] absolute top-0 left-0 lg:hidden"
             >
               <path
                 d="M1212.5 1204.5V1045.5C1212.5 1022.86 1194.14 1004.5 1171.5 1004.5H46C23.3563 1004.5 5 986.144 5 963.5V238.5C5 215.856 23.3563 197.5 46 197.5H633C655.644 197.5 674 179.144 674 156.5V5"
@@ -106,7 +165,7 @@ const ScrollColorChange = () => {
               height="1209"
               viewBox="0 0 1217 1209"
               fill="none"
-              className="w-full h-[110vh] absolute top-0 left-0"
+              className="w-full h-[110vh] absolute top-0 left-0 lg:hidden"
             >
               <path
                 d="M1212.5 1204.5V1045.5C1212.5 1022.86 1194.14 1004.5 1171.5 1004.5H46C23.3563 1004.5 5 986.144 5 963.5V238.5C5 215.856 23.3563 197.5 46 197.5H633C655.644 197.5 674 179.144 674 156.5V5"
@@ -123,8 +182,9 @@ const ScrollColorChange = () => {
                 }}
               />
             </svg>
-            <div className=" absolute top-[45%] right-[5%] w-xl flex justify-start items-center gap-10">
+            <div className=" absolute top-[45%] lg:top-[30%] right-[5%] w-xl flex flex-wrap justify-center items-center gap-10 lg:right-0 px-4">
               <motion.div
+                className="backdrop-filter backdrop-blur-lg px-4 py-8 rounded-2xl border-2 border-blue-200 "
                 animate={{
                   y: [0, -10, 0], // Keyframes for floating effect
                 }}
@@ -180,7 +240,7 @@ const ScrollColorChange = () => {
         <div
           className="section"
           data-bg-color="#ffeddf"
-          style={{ height: "100vh" }}
+          style={{ height: "50vh" }}
         >
           <h1>Section 3</h1>
         </div>
