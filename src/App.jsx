@@ -3,6 +3,8 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SmoothScroll from "./component/SmoothScroll";
 import { motion } from "framer-motion";
+import Smooth from "./component/Smooth";
+import HScroll from "./component/Horizontal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,8 +40,8 @@ const ScrollColorChange = () => {
           strokeDashoffset: 0,
           scrollTrigger: {
             trigger: path2.closest(".section2"),
-            start: "top 85%",
-            end: "+=600",
+            start: "top 70%",
+            end: "+=1000",
             scrub: 1,
           },
         }
@@ -58,7 +60,7 @@ const ScrollColorChange = () => {
           scrollTrigger: {
             trigger: path.closest(".section"),
             start: "top 85%",
-            end: "+=600",
+            end: "+=1000",
             scrub: 1,
           },
         }
@@ -89,7 +91,7 @@ const ScrollColorChange = () => {
   }, []);
 
   return (
-    <SmoothScroll>
+    <Smooth>
       <div className=" font-mono overflow-x-hidden ">
         <div
           className="section flex flex-col justify-center items-center gap-2"
@@ -242,10 +244,10 @@ const ScrollColorChange = () => {
           data-bg-color="#ffeddf"
           style={{ height: "50vh" }}
         >
-          <h1>Section 3</h1>
+          <h1>{/* <HScroll /> */}</h1>
         </div>
       </div>
-    </SmoothScroll>
+    </Smooth>
   );
 };
 
