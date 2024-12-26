@@ -7,7 +7,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ScrollColorChange = () => {
   const [pathLength, setPathLength] = useState(0);
+  useEffect(() => {
+    const displaceDiv = document.querySelector(".follow-mouse");
 
+    // Update displacement on mouse move
+    document.addEventListener("mousemove", (event) => {
+      const { clientX, clientY } = event;
+
+      // Adjust translation
+      const xDisplacement = (clientX - window.innerWidth / 2) * 0.05; // Sensitivity factor
+      const yDisplacement = (clientY - window.innerHeight / 2) * 0.05;
+
+      // Apply displacement
+      displaceDiv.style.transform = `translate(${xDisplacement}px, ${yDisplacement}px)`;
+    });
+  }, []);
   useEffect(() => {
     const path = document.querySelector(".svg-path");
     if (path) {
@@ -21,8 +35,8 @@ const ScrollColorChange = () => {
           strokeDashoffset: totalLength,
           scrollTrigger: {
             trigger: path.closest(".section"),
-            start: "top 80%",
-            end: "+=500",
+            start: "top 85%",
+            end: "+=600",
             scrub: 1,
           },
         }
@@ -54,31 +68,32 @@ const ScrollColorChange = () => {
 
   return (
     <SmoothScroll>
-      <div>
+      <div className=" font-mono ">
         <div
           className="section flex flex-col justify-center items-center gap-2"
           data-bg-color="#f9e1ee"
           style={{ height: "100vh" }}
         >
-          <h1>Section 1</h1>
+          <div className=" w-full text-6xl self-stretch text-center font-extrabold follow-mouse ">
+            Assignment Techsnap
+          </div>
         </div>
         <div
           className="section section2"
           data-bg-color="#e0f0ff"
           style={{ height: "100vh" }}
         >
-          <h1>Section 2</h1>
-          <div className="w-1140 flex justify-center items-center gap-2 relative">
+          <div className="w-1440 flex justify-center items-center gap-2 relative">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="1098"
-              height="835"
-              viewBox="0 0 1098 835"
+              width="1217"
+              height="1209"
+              viewBox="0 0 1217 1209"
               fill="none"
-              className="w-full h-[90vh] absolute top-0 left-0 "
+              className="w-full h-[110vh] absolute top-0 left-0"
             >
               <path
-                d="M1093.5 830V771.5C1093.5 748.856 1075.14 730.5 1052.5 730.5H45.5C22.8563 730.5 4.5 712.144 4.5 689.5V328C4.5 305.356 22.8563 287 45.5 287H514C536.644 287 555 268.644 555 246V5"
+                d="M1212.5 1204.5V1045.5C1212.5 1022.86 1194.14 1004.5 1171.5 1004.5H46C23.3563 1004.5 5 986.144 5 963.5V238.5C5 215.856 23.3563 197.5 46 197.5H633C655.644 197.5 674 179.144 674 156.5V5"
                 stroke="black"
                 strokeWidth="9"
                 strokeLinecap="round"
@@ -86,14 +101,14 @@ const ScrollColorChange = () => {
             </svg>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="1098"
-              height="835"
-              viewBox="0 0 1098 835"
+              width="1217"
+              height="1209"
+              viewBox="0 0 1217 1209"
               fill="none"
-              className="w-full h-[90vh] absolute top-0 left-0"
+              className="w-full h-[110vh] absolute top-0 left-0"
             >
               <path
-                d="M1093.5 830V771.5C1093.5 748.856 1075.14 730.5 1052.5 730.5H45.5C22.8563 730.5 4.5 712.144 4.5 689.5V328C4.5 305.356 22.8563 287 45.5 287H514C536.644 287 555 268.644 555 246V5"
+                d="M1212.5 1204.5V1045.5C1212.5 1022.86 1194.14 1004.5 1171.5 1004.5H46C23.3563 1004.5 5 986.144 5 963.5V238.5C5 215.856 23.3563 197.5 46 197.5H633C655.644 197.5 674 179.144 674 156.5V5"
                 stroke="white"
                 strokeWidth="9"
                 strokeLinecap="round"
