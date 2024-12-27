@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import  { useState, useRef, useEffect } from "react";
 import { useScroll, useSpring, useTransform, motion } from "framer-motion";
 
 const Smooth = ({ children }) => {
